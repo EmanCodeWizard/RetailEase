@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer and Order Query</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('order2.jpg'); /* Replace with your background image path */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(150, 218, 250, 0.3); /* Semi-transparent white background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"], button {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 22px); /* Adjust for padding and border */
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #customer-query-result, #order-query-result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #c9ebf1;
+            text-align: left; /* Adjust text alignment as needed */
+        }
+
+        #customer-query-result h3, #order-query-result h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        #customer-query-result p, #order-query-result p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Customer and Order Query</h1>
+
+        <form id="customer-query-form">
+            <h2>Customer Query</h2>
+            <label for="customer-id">Enter Customer ID:</label>
+            <input type="text" id="customer-id" name="customer-id" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="customer-query-result"></div>
+
+        <form id="order-query-form">
+            <h2>Order Query</h2>
+            <label for="order-id">Enter Order ID:</label>
+            <input type="text" id="order-id" name="order-id" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="order-query-result"></div>
+        <button class="NEXT" onclick="location.href='/static/delete.html'">NEXT</button>
+    </div>
+    </div>
+
+    <script>
+        document.getElementById('customer-query-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const customerId = document.getElementById('customer-id').value;
+            fetch(`/get_customer_info?customer_id=${customerId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const queryResultContainer = document.getElementById('customer-query-result');
+                    if (data.error) {
+                        queryResultContainer.innerHTML = `<p>${data.error}</p>`;
+                    } else {
+                        queryResultContainer.innerHTML = `
+                            <h3>Customer Info</h3>
+                            <p>Email: ${data.email}</p>
+                            <p>Country: ${data.country}</p>
+                            <p>First Name: ${data.first_name}</p>
+                            <p>Last Name: ${data.last_name}</p>
+                            <p>Phone Number: ${data.phone_number}</p>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching info:', error);
+                });
+        });
+
+        document.getElementById('order-query-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const orderId = document.getElementById('order-id').value;
+            fetch(`/get_order_info?order_id=${orderId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const queryResultContainer = document.getElementById('order-query-result');
+                    if (data.error) {
+                        queryResultContainer.innerHTML = `<p>${data.error}</p>`;
+                    } else {
+                        queryResultContainer.innerHTML = `
+                            <h3>Order Info</h3>
+                            <p>Number of Products: ${data.number_of_products}</p>
+                            <p>Total Amount: ${data.total_amount}</p>
+                            <p>Customer ID: ${data.customer_id}</p>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching info:', error);
+                });
+        });
+    </script>
+</body>
+</html>

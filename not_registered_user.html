@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Not Registered User</title>
+  <style>
+    /* General body styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://t3.ftcdn.net/jpg/04/91/91/36/240_F_491913694_vOTBQiNE0Pvr6CpLjEs7rmIqS7yVAIe0.jpg'); /* Replace with your background image path */
+        background-size: cover; /* Cover the entire background */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+    
+    /* Heading styling */
+    h1 {
+        color: #333;
+        margin-bottom: 20px;
+        background: rgba(255, 255, 255, 0.1); /* White background with some transparency */
+        padding: 10px 20px;
+        border-radius: 8px;
+    }
+    
+    /* Form styling */
+    form {
+        background: rgba(255, 255, 255, 0.2); /* White background with some transparency */
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px; /* Adjust width as needed */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Label styling */
+    label {
+        margin: 10px 0 5px;
+        color: #555;
+        width: 100%;
+    }
+    
+    /* Input styling */
+    input[type="text"],
+    textarea,
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    /* Submit button styling */
+    input[type="submit"] {
+        background-color: #cf8320;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #1ac561;
+    }
+    
+    /* Home link styling */
+    p {
+        margin-top: 20px;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #202020;
+        transition: color 0.3s ease;
+    }
+    
+    a:hover {
+        color: #19191a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Not Registered User</h1>
+  <form action="/not_registered_user" method="post">
+    <label for="session_id">session_id</label>
+    <input type="text" id="session_id" name="session_id"><br><br>
+    <label for="order_history">order_history</label>
+    <textarea id="order_history" name="order_history"></textarea><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <p><a href="home.html">Home</a></p>
+</body>
+</html>

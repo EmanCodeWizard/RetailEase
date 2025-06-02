@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Type</title>
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://t4.ftcdn.net/jpg/06/38/00/39/240_F_638003971_5QST36LYf2tCF5xWcGEk9AdgXW1ie45y.jpg'); /* Background image */
+      background-size: cover; /* Cover the entire background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    /* Container styling */
+   .container {
+      background: rgba(255, 255, 255, 0.8); /* White background with some transparency */
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+      text-align: center;
+    }
+    
+    /* Welcome heading styling */
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    /* General button styling */
+    button {
+      display: block;
+      width: 200px; /* Fixed width */
+      padding: 15px;
+      font-size: 16px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin: 10px auto; /* Center buttons */
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    /* Guest button specific styling */
+    button.guest {
+      background-color: #4CAF50; /* Green background */
+    }
+    
+    button.guest:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+    
+    /* Registered button specific styling */
+    button.registered {
+      background-color: #008CBA; /* Blue background */
+    }
+    
+    button.registered:hover {
+      background-color: #007bb5; /* Darker blue on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="welcome-box">
+      <h1>WELCOME</h1>
+      <button class="guest" onclick="location.href='/static/not_registered_user.html'">Guest</button>
+      <button class="registered" onclick="location.href='/static/registered_user.html'">Registered User</button>
+    </div>
+  </div>
+</body>
+</html>

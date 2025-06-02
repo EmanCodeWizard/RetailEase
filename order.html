@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('order2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 20px;
+            margin: 50px auto;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button.registered {
+            background-color: #007bff;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order</h1>
+        <h2>Total Quantity: <span id="total-quantity"></span></h2>
+        <h2>Total: $<span id="total-amount"></span></h2>
+        <button class="registered" onclick="location.href='/static/next.html'">Registered User</button>
+    </div>
+
+    <div class="container">
+        <h1>Place Your Order</h1>
+        <form method="POST" action="/order">
+            <label for="customer-id">Customer ID:</label>
+            <input type="text" id="customer-id" name="customer-id" required>
+            <br><br>
+            <label for="order-id">Order ID:</label>
+            <input type="text" id="order-id" name="order-id" required>
+            <br><br>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" required>
+            <br><br>
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" step="0.01" required>
+            <br><br>
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+
+    <script>
+        const queryParams = new URLSearchParams(window.location.search);
+        const totalQuantity = queryParams.get('totalQuantity');
+        const totalAmount = queryParams.get('totalAmount');
+
+        document.getElementById('total-quantity').textContent = totalQuantity;
+        document.getElementById('total-amount').textContent = totalAmount;
+
+        function navigateToNextPage() {
+            window.location.href = 'next.html';
+        }
+    </script>
+</body>
+</html>

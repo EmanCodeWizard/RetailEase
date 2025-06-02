@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to top, #334d50, #cbcaa5);
+            background-image: url('https://segwitz.com/wp-content/uploads/2021/09/why-ecommerce-need-mobile-apps.jpg');
+            background-size: cover;
+            background-color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .form-box {
+            text-align: center;
+            color: hsl(0, 0%, 100%);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 70%;
+            padding: 10px;
+            background: none;
+            border: none;
+            border-bottom: 1px solid #4e4e4e; /* Reduced the thickness here */
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            outline: none;
+        }
+
+        .input-group label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: rgb(255, 255, 255);
+            transition: 0.3s;
+        }
+
+        .input-group input:focus ~ label,
+        .input-group input:valid ~ label {
+            top: -20px;
+            font-size: 14px;
+            font-style: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Register</h2>
+            <form action="/customer" method="post">
+
+                <div class="input-group">
+                    <input type="text" id="first-name" name="first-name" required>
+                    <label for="first-name">First Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="last-name" name="last-name" required>
+                    <label for="last-name">Last Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="tel" id="phone-number" name="phone-number" required>
+                    <label for="phone-number">Phone Number</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="Email" name="Email" required>
+                    <label for="Email">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="country" name="country" required>
+                    <label for="country">Country</label>
+                </div>
+                <button type="submit">Register</button><br><br>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>

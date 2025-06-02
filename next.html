@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Query</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('sales.jpg'); /* Replace with your background image path */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: rgba(247, 190, 221, 0.1); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button[type="submit"], button.GET_DATA {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover, button.GET_DATA:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        #product-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #eeabab;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #product-info h3 {
+            color: #333;
+        }
+
+        #product-info p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Query</h1>
+        <form id="product-form">
+            <label for="product-id">Enter Product ID:</label>
+            <input type="text" id="product-id" name="product-id" required>
+            <button type="submit">Submit</button><br><br>
+            <button class="GET_DATA" onclick="location.href='/static/GET_DATA.html'">NEXT</button>
+        </form>
+        <div id="product-info"></div>
+    </div>
+
+    <script>
+        document.getElementById('product-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const productId = document.getElementById('product-id').value;
+            fetch(`/get_product_info?product_id=${productId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const productInfoContainer = document.getElementById('product-info');
+                    if (data.error) {
+                        productInfoContainer.innerHTML = `<p>${data.error}</p>`;
+                    } else {
+                        productInfoContainer.innerHTML = `
+                            <h3>Product ID: ${data.product_id}</h3>
+                            <p>Voucher Available: ${data.voucher_available ? 'Yes' : 'No'}</p>
+                            <p>Sale Product: ${data.sale_product}</p>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching product info:', error);
+                });
+        });
+    </script>
+</body>
+</html>

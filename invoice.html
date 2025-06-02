@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs7NB_wDPuL_HCf5PMoivtqik9azuf6TnJnw&s'); /* Replace with your image URL */
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-top: 50px;
+            color: #fff;
+            background-color: rgba(6, 112, 42, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        form {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        label {
+            margin-right: 10px;
+        }
+        input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment Information</h1>
+    
+    <form id="customer-form">
+        <label for="customer_id">Customer ID:</label>
+        <input type="text" id="customer_id" name="customer_id" required>
+        <button type="submit">Fetch Payment Info</button>
+    </form>
+
+    <h2>Payment Details</h2>
+    <table id="payment-table" border="1">
+        <thead>
+            <tr>
+                <th>Payment ID</th>
+                <th>Payment</th>
+                <th>Invoice</th>
+                <th>Customer ID</th>
+                <th>Order ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('customer-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const customerId = document.getElementById('customer_id').value;
+
+            fetch(`/get_payment_info?customer_id=${customerId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#payment-table tbody');
+                    tableBody.innerHTML = ''; // Clear previous results
+
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        data.forEach(payment => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${payment.payment_id}</td>
+                                <td>${payment.payment}</td>
+                                <td>${payment.invoice}</td>
+                                <td>${payment.customer_id}</td>
+                                <td>${payment.order_id}</td>
+                            `;
+                            tableBody.appendChild(row);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching payment info:', error));
+        });
+    </script>
+</body>
+</html>

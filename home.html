@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products</title>
+    <script src="cart.js" defer></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #c5f3e5;
+    
+    margin: 0;
+    padding: 0;
+    background-image: url('bac.jpg');
+    background-size: cover; 
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product {
+    background-color: rgb(212, 204, 204,0.3);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 23%;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.product img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.product h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.product p {
+    color: #555;
+}
+
+.product button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background-color: #45a049;
+}
+
+    </style>
+<body>
+    <div class="container">
+        <h1>Our Products</h1>
+
+        <div class="products">
+            <div class="product" data-product-id="1001">
+                <img src="QUSNTUM SOCK.JPG" alt="Quantum Socks">
+                <h2>Quantum Socks</h2>
+                <p>Comfortable socks</p>
+                <p>Price: $76.50</p>
+                <p>1001</p>
+                <button class="cart" onclick="addToCart('Quantum Socks', 76.50)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1002">
+                <img src="calculator.jpg" alt="Solar Powered Calculator">
+                <h2>Solar Powered Calculator</h2>
+                <p>Eco-friendly calculator</p>
+                <p>Price: $101.70</p>
+                <p>1002</p>
+                <button class="cart" onclick="addToCart('Solar Powered Calculator', 101.70)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1003">
+                <img src="https://rlv.zcache.com/purple_space_galaxy_cosmic_spacey_teal_pink_bath_towel_set-re93a9732cf4b43729401f1d7b979a1b7_ezaga_200.webp?rlvnet=1" alt="Galactic Bath Towel">
+                <h2>Galactic Bath Towel</h2>
+                <p>Luxury bath towel</p>
+                <p>Price: $82.50</p>
+                <p>1003</p>
+                <button class="cart" onclick="addToCart('Galactic Bath Towel', 82.50)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1004">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV-5LPoO6wJfc8EnMNqqVUlnT69Q0h9cOxVQ&s" alt="Cloud Print Umbrella">
+                <h2>Cloud Print Umbrella</h2>
+                <p>Stylish umbrella</p>
+                <p>Price: $101.70</p>
+                <p>1004</p>
+                <button class="cart" onclick="addToCart('Cloud Print Umbrella', 101.70)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1005">
+                <img src="higlight.jpg" alt="Rainbow Highlighter Set">
+                <h2>Rainbow Highlighter Set</h2>
+                <p>Vibrant highlighters</p>
+                <p>Price: $101.70</p>
+                <p>1005</p>
+                <button class="cart" onclick="addToCart('Rainbow Highlighter Set', 101.70)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1006">
+                <img src="DRAGONFLY.JPG" alt="Dragonfly Wall Clock">
+                <h2>Dragonfly Wall Clock</h2>
+                <p>Elegant wall clock</p>
+                <p>Price: $229.50</p>
+                <p>1006</p>
+                <button class="cart" onclick="addToCart('Dragonfly Wall Clock', 229.50)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1007">
+                <img src="FLORAL RINT.JPG" alt="Floral Print Backpack">
+                <h2>Floral Print Backpack</h2>
+                <p>Fashionable backpack</p>
+                <p>Price: $127.50</p>
+                <p>1007</p>
+                <button class="cart" onclick="addToCart('Floral Print Backpack', 127.50)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1008">
+                <img src="MOON LIGTH.JPG" alt="Moonlight Lamp">
+                <h2>Moonlight Lamp</h2>
+                <p>Calming moon lamp</p>
+                <p>Price: $55.50</p>
+                <p>1008</p>
+                <button class="cart" onclick="addToCart('Moonlight Lamp', 55.50)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1009">
+                <img src="PETGROMMING.JPG" alt="Pet Grooming Kit">
+                <h2>Pet Grooming Kit</h2>
+                <p>Pet grooming essentials</p>
+                <p>Price: $55.50</p>
+                <p>1009</p>
+                <button class="cart" onclick="addToCart('Pet Grooming Kit', 55.50)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1010">
+                <img src="STARRY NIGHT PAINT SET.JPG" alt="Starry Night Paint Set">
+                <h2>Starry Night Paint Set</h2>
+                <p>Artistic paint set</p>
+                <p>Price: $50.70</p>
+                <p>1010</p>
+                <button class="cart" onclick="addToCart('Starry Night Paint Set', 50.70)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1011">
+                <img src="VIRTUALA REALITY.JPG" alt="Virtual Reality Headset">
+                <h2>Virtual Reality Headset</h2>
+                <p>Immersive VR headset</p>
+                <p>Price: $63.00</p>
+                <p>1011</p>
+                <button class="cart" onclick="addToCart('Virtual Reality Headset', 63.00)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1012">
+                <img src="BAMBOOCUTTING.JPG" alt="Bamboo Cutting Board">
+                <h2>Bamboo Cutting Board</h2>
+                <p>Sustainable cutting board</p>
+                <p>Price: $63.00</p>
+                <p>1012</p>
+                <button class="cart" onclick="addToCart('Bamboo Cutting Board', 63.00)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1013">
+                <img src="YOGA AMT STRIPE.JPG" alt="Yoga Mat Strap">
+                <h2>Yoga Mat Strap</h2>
+                <p>Convenient yoga strap</p>
+                <p>Price: $112.50</p>
+                <p>1013</p>
+                <button class="cart" onclick="addToCart('Yoga Mat Strap', 112.50)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1014">
+                <img src="WIRELESS CHARGING.JPG" alt="Wireless Charging Pad">
+                <h2>Wireless Charging Pad</h2>
+                <p>Fast charger</p>
+                <p>Price: $49.50</p>
+                <p>1014</p>
+                <button class="cart" onclick="addToCart('Wireless Charging Pad', 49.50)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1015">
+                <img src="MAGNETIC WHITE.JPG" alt="Magnetic Whiteboard">
+                <h2>Magnetic Whiteboard</h2>
+                <p>Versatile whiteboard</p>
+                <p>Price: $127.50</p>
+                <p>1015</p>
+                <button class="cart" onclick="addToCart('Magnetic Whiteboard', 127.50)">Add to Cart</button>
+            </div>
+            <div class="product" data-product-id="1016">
+                <img src="ESPRESSOMACHINE.JPG" alt="Espresso Machine">
+                <h2>Espresso Machine</h2>
+                <p>Home espresso maker</p>
+                <p>Price: $148.50</p>
+                <p>1016</p>
+                <button class="cart" onclick="addToCart('Espresso Machine', 148.50)">Add to Cart</button>
+            </div>            <div class="product">
+                <img src="ROBOTVACUUM.JPG" alt="Robot Vacuum Cleaner">
+                <h2>Robot Vacuum Cleaner</h2>
+                <p>Automated cleaner</p>
+                <p>Price: $298.50</p>
+                <p>1017</p>
+                <button class="cart" onclick="addToCart('Robot Vacuum Cleaner', 298.50)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="ELECTRICC SCOOTER.JPG" alt="Electric Scooter">
+                <h2>Electric Scooter</h2>
+                <p>Portable scooter</p>
+                <p>Price: $178.50</p>
+                <p>1018</p>
+                <button class="cart" onclick="addToCart('Electric Scooter', 178.50)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="HIMALAYAN SALTLAMP..JPG" alt="Himalayan Salt Lamp">
+                <h2>Himalayan Salt Lamp</h2>
+                <p>Natural lamp</p>
+                <p>Price: $178.50</p>
+                <p>1019</p>
+                <button class="cart" onclick="addToCart('Himalayan Salt Lamp', 178.50)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="WEIGHTEDBLANKET.JPG" alt="Weighted Blanket">
+                <h2>Weighted Blanket</h2>
+                <p>Calming blanket</p>
+                <p>Price: $238.50</p>
+                <p>1020</p>
+                <button class="cart" onclick="addToCart('Weighted Blanket', 238.50)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="PORTABLE AR=IRCONDITIONER.JPG" alt="Product 2">
+                <h2>Portable Air Conditioner</h2>
+                <p>Portable Air Conditioner - Compact AC.</p>
+                <p>Price: $127.5</p>
+                <p>1021</p>
+                <button class="cart" onclick="addToCart('Portable Air Conditioner', 127.5)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Bamboo Fiber Towel Set.JPG" alt="Product 2">
+                <h2>Bamboo Fiber Towel Set</h2>
+                <p>Bamboo Fiber Towel Set - Eco towels.</p>
+                <p>Price: $148.49</p>
+                <p>1022</p>
+                <button class="cart" onclick="addToCart('Bamboo Fiber Towel Set', 148.49)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Adjustable Dumbbell Set.JPG" alt="Product 2">
+                <h2>Adjustable Dumbbell Set</h2>
+                <p>DAdjustable Dumbbell Set - Custom weights.</p>
+                <p>Price: $148.49</p>
+                <p>1023</p>
+                <button class="cart" onclick="addToCart('Adjustable Dumbbell Set', 148.49)">Add to Cart</button>
+            </div>
+            <div class="product"  >
+                <img src="Rechargeable Hand Warmer.JPG" alt="Product 2">
+                <h2>Rechargeable Hand Warmer</h2>
+                <p>Rechargeable Hand Warmer - Warm hand device</p>
+                <p>Price: $148.49</p>
+                <p>1024</p>
+                <button class="cart" onclick="addToCart('Rechargeable Hand Warmer', 148.49)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
